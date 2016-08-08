@@ -23,6 +23,8 @@ var (
 	TermTimeFormat = DefTermTimeFormat
 )
 
+type CustomString string
+
 type Format interface {
 	Format(r *Record) []byte
 }
@@ -229,6 +231,8 @@ func formatLogfmtValue(value interface{}) string {
 		return strconv.FormatFloat(v, floatFormat, 3, 64)
 	case int, int8, int16, int32, int64, uint, uint8, uint16, uint32, uint64:
 		return fmt.Sprintf("%d", value)
+	case CustomString:
+		return fmt.Sprintf("```%s```", v)
 	case string:
 		return escapeString(v)
 	default:
