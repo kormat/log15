@@ -2,7 +2,7 @@ package ext
 
 import (
 	"errors"
-	log "github.com/inconshreveable/log15"
+	log "gopkg.in/kormat/log15.v2"
 	"math"
 	"testing"
 )
